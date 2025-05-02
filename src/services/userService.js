@@ -8,7 +8,16 @@ const handleLoginApi = (userEmail, userPassword) => {
 }
 
 const getAllUsers = (inputId) => {
-    return axios.get(`/api/get-all-users?id=${inputId}`)
+    return axios.get(`/api/get-all-users`, {
+        params: { id: inputId }
+    })
+}
+
+const createNewUserService = (data) => {
+    return axios.post('/api/create-new-user', data)
 }
  
-export {handleLoginApi, getAllUsers}
+const deleteUserService = (userId) => {
+    return axios.delete(`/api/delete-user`, {data: {id: userId}})
+}
+export {handleLoginApi, getAllUsers, createNewUserService, deleteUserService}
